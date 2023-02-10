@@ -1,3 +1,11 @@
+"""
+This is the client which connects to a server and listens for communicated
+information that can be used as instructions.
+This script is ran on the plane to connect to the server.
+
+By: s3a6m9
+Version: 1.0
+"""
 import socket
 
 
