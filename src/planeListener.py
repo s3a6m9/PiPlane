@@ -17,7 +17,7 @@ RIGHT_AILERON_PIN = 12
 ELEVATOR_PIN = 13
 
 
-sleep(5) # so that if program crashes it does not keep fucking up
+sleep(5) # if the service instance crashes it will not restart instantly.
 print("Connecting")
 client = fromPlaneClient.ComponentClient(HOST, PORT)
 client.initialise_connection()
