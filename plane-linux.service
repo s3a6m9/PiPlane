@@ -3,7 +3,7 @@ Description=Connect to plane control server
 After=network.target
 
 [Service]
-ExecStart=/home/pi/Documents/plane/plane-code/venv/bin/python3 -u /home/pi/Documents/plane/plane-code/connector.py
+ExecStart=/home/pi/Documents/plane/plane-code/venv/bin/python3 -u /home/pi/Documents/plane/plane-code/planeListener.py
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always
