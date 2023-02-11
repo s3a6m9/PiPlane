@@ -20,7 +20,7 @@ class Servo:
         self.rotation_percentage = None
 
     def initialise_servo(self):
-        """ Initialises servo for controlability """
+        """ Initialises servo for control """
         self.servo = gpiozero_servo(
             self.pin,
             pin_factory=PiGPIOFactory(),
@@ -31,7 +31,7 @@ class Servo:
         self.set_rotation(0)
 
     def set_rotation(self, rotation_percentage):
-        """ Rotates the servo obased on the percentage arg """
+        """ Rotates the servo based on the percentage parameter """
         rotation_value = 2 * rotation_percentage - 1
         # The value of 2 is used because servo value can only be between
         # -1 and 1 so 0% would be -1 and therefore the min angle
