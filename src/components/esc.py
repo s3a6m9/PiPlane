@@ -63,7 +63,8 @@ class ESC:
         self.dutycycle = dutycycle
 
     def set_frequency(self, frequency):
-        self.pi.hardware_PWM(self.pin, self.frequency, self.dutycycle)
+        self.pi.hardware_PWM(self.pin, frequency, self.dutycycle)
+        self.frequency = frequency
 
 
     def get_throttle(self):
