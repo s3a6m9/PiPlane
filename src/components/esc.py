@@ -1,7 +1,7 @@
 """
 Controls electronic speed controllers that are connected to motor
 By: s3a6m9
-Version: 1.0
+Version: 1.1.0
 """
 
 import time
@@ -27,6 +27,7 @@ class ESC:
         self.pi = pigpio.pi()
         self.pi.set_mode(self.pin, pigpio.OUTPUT)
 
+        self.dutycycle = 0
         self.percentage_speed = None
 
     def initialise_motor(self):
@@ -48,12 +49,22 @@ class ESC:
             round(self.min_duty + (self.margin * percentage_speed), 0))
 
         if percentage_speed == 0:
-            dutycycle = self.close_dutycycle
+            dutycycle = self.close_dutycycle 
+            # Close value is used because the motor stops faster than if it is 0
 
         self.pi.hardware_PWM(self.pin, self.frequency, dutycycle)
+        self.dutycycle = dutycycle
         self.percentage_speed = percentage_speed
 
         # return dutycycle
+
+    def set_dutycycle(self, dutycycle):
+        self.pi.hardware_PWM(self.pin, self.frequency, dutycycle)
+        self.dutycycle = dutycycle
+
+    def set_frequency(self, frequency):
+        self.pi.hardware_PWM(self.pin, self.frequency, self.dutycycle)
+
 
     def get_throttle(self):
         """ Returns the throttle percentage speed """
